@@ -4,26 +4,28 @@ import PostCard from '../components/postcard/PostCard'
 function MainFeed() {
 
   return (
-   <div>
-    <SearchBar />
     <div>
-      {/* Կանչում ենք մեր կոմպոնենտը և փոխանցում ենք տվյալները */}
-      <PostCard 
-        title="Անալիտիկ երկրաչափության միջանկյալի հարցերը" 
-        authorNickname="Tiko99" 
-        subjectTag="Math" 
-        upvotes={15} 
-      />
+      <SearchBar />
+      <div>
+        {/* Կանչում ենք մեր կոմպոնենտը և փոխանցում ենք տվյալները */}
+        <PostCard
+          title="Անալիտիկ երկրաչափության միջանկյալի հարցերը"
+          authorNickname="Tiko99"
+          subjectTag="Math"
+          initialLikes={809}
+          initialDislikes={15}
+        />
 
-      {/* Կարող ենք կանչել ևս մեկը՝ ուրիշ տվյալներով */}
-      <PostCard 
-        title="Ֆիզիկայի լաբորատոր աշխատանք №3" 
-        authorNickname="Anna_Phys" 
-        subjectTag="Physics" 
-        upvotes={8} 
-      />
+        {/* Կարող ենք կանչել ևս մեկը՝ ուրիշ տվյալներով */}
+        <PostCard
+          title="Ֆիզիկայի լաբորատոր աշխատանք №3"
+          authorNickname="Anna_Phys"
+          subjectTag="Physics"
+          initialLikes={24}
+          initialDislikes={65}
+        />
+      </div>
     </div>
-   </div>
   )
 }
 
