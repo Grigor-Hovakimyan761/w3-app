@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import PostCard from '../components/postcard/PostCard';
 import './Profile.css';
 import { IoSettingsOutline } from "react-icons/io5";
@@ -16,7 +16,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      
+
       {/* 1. Վերևի նավիգացիա */}
       <div className="profile-top-bar">
         <h2>@Grigor_Dev</h2>
@@ -59,7 +59,7 @@ const Profile = () => {
           <p>Թույլ տալ մյուսներին ուղարկել հայտեր</p>
         </div>
         {/* Անջատիչի կոճակը, որը սեղմելիս փոխում է վիճակը */}
-        <div 
+        <div
           className={`toggle-switch ${isConnectionsOpen ? 'active' : ''}`}
           onClick={() => setIsConnectionsOpen(!isConnectionsOpen)}
         >
@@ -87,21 +87,21 @@ const Profile = () => {
 
       {/* 6. Տաբեր (Tabs) */}
       <div className="tabs-container">
-        <button 
+        <button
           className={`tab-btn ${activeTab === 'posts' ? 'active-tab' : ''}`}
           onClick={() => setActiveTab('posts')}
         >
-          <SiSparkpost className="tab-icon" />  
+          <SiSparkpost className="tab-icon" />
           Իմ Նյութերը
         </button>
-        <button 
+        <button
           className={`tab-btn ${activeTab === 'saved' ? 'active-tab' : ''}`}
           onClick={() => setActiveTab('saved')}
         >
           <BsBookmark className="tab-icon" />
           Պահպանված
         </button>
-        <button 
+        <button
           className={`tab-btn ${activeTab === 'requests' ? 'active-tab' : ''}`}
           onClick={() => setActiveTab('requests')}
         >
@@ -112,17 +112,19 @@ const Profile = () => {
 
       {/* 7. Նյութերի ցանկ */}
       <div className="posts-feed">
-        <PostCard 
-          title="React hooks and state management" 
-          authorNickname="Grigor_Dev" 
-          subjectTag="CompSci" 
-          upvotes={89} 
+        <PostCard
+          title="React hooks and state management"
+          authorNickname="Grigor_Dev"
+          subjectTag="CompSci"
+          initialLikes={89}
+          initialDislikes={12}
         />
-        <PostCard 
-          title="Advanced Calculus notes" 
-          authorNickname="Grigor_Dev" 
-          subjectTag="Math" 
-          upvotes={127} 
+        <PostCard
+          title="Advanced Calculus notes"
+          authorNickname="Grigor_Dev"
+          subjectTag="Math"
+          initialLikes={9}
+          initialDislikes={52}
         />
       </div>
 
