@@ -1,4 +1,3 @@
-import TopBar from '../components/topbar/TopBar'
 import SearchBar from '../components/SearchBar/SearchBar'
 import PostCard from '../components/postcard/PostCard'
 
@@ -6,7 +5,6 @@ function MainFeed() {
 
   return (
    <div>
-    <TopBar />
     <SearchBar />
     <div>
       {/* Կանչում ենք մեր կոմպոնենտը և փոխանցում ենք տվյալները */}

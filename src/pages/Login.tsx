@@ -1,7 +1,11 @@
 import './Login.css';
 import { FaWallet, FaGoogle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="login-container">
       <div className="login-card">
@@ -12,7 +16,9 @@ const Login = () => {
 
         {/* Web3 և սոցիալական ցանցերով մուտք */}
         <div className="web3-login-section">
-          <button className="connect-wallet-btn">
+          <button className="connect-wallet-btn"
+            onClick={() => navigate('/connect-wallet')}
+          >
             <FaWallet className="btn-icon" /> Միանալ Դրամապանակով
           </button>
           <button className="social-login-btn">
