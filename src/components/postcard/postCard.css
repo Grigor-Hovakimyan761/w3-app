@@ -89,14 +89,17 @@
 }
 
 /* Վառ գույներ hover-ի ժամանակ (մկնիկը վրան պահելիս) */
-.upvote-btn:hover {
-  color: #00e676; 
-  transform: scale(1.2);
-}
+/* Hover էֆեկտները կաշխատեն ՄԻԱՅՆ համակարգիչների (մկնիկով) դեպքում */
+@media (hover: hover) {
+  .upvote-btn:hover {
+    color: #00e676; 
+    transform: scale(1.2);
+  }
 
-.downvote-btn:hover {
-  color: #ff3d00; 
-  transform: scale(1.2);
+  .downvote-btn:hover {
+    color: #ff3d00; 
+    transform: scale(1.2);
+  }
 }
 
 .upvote-btn:active, .downvote-btn:active {
