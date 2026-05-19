@@ -1,9 +1,9 @@
 /* Քարտի գլխավոր կոնտեյները (Մուգ թեմա) */
 .post-card-container {
   display: flex;
-  flex-direction: column; /* Դասավորությունը դարձրինք վերևից ներքև */
-  background-color: #121212; /* Հիմնական մուգ մոխրագույն ֆոն */
-  border: 1px solid #2a2a2a; /* Նուրբ, մի քիչ բաց մոխրագույն եզրագիծ */
+  flex-direction: column;
+  background-color: #121212;
+  border: 1px solid #2a2a2a;
   border-radius: 12px;
   padding: 16px 20px;
   margin-bottom: 16px;
@@ -12,7 +12,7 @@
 
 /* Էֆեկտ մկնիկը վրան պահելիս */
 .post-card-container:hover {
-  background-color: #161616; /* Մի փոքր ավելի բացանում է */
+  background-color: #161616;
   border-color: #3a3a3a;
 }
 
@@ -28,26 +28,26 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  max-width: 75%; /* Որպեսզի երկար վերնագիրը չկպնի Tag-ին */
+  max-width: 75%;
 }
 
 .post-title {
   margin: 0;
   font-size: 18px;
-  color: #ffffff; /* Վերնագիրը՝ վառ սպիտակ */
+  color: #ffffff;
   line-height: 1.4;
   font-weight: 600;
 }
 
 .author-nickname {
-  color: #888888; /* Նիքնեյմը՝ խամրած մոխրագույն */
+  color: #888888;
   font-size: 14px;
   font-weight: 500;
 }
 
 /* --- Առարկայի պիտակը (Tag) --- */
 .subject-tag {
-  background-color: #007bff; /* Վառ կապույտ (կարող ենք հետո դինամիկ դարձնել) */
+  background-color: #007bff;
   color: #F6F9EE;
   padding: 4px 14px;
   border-radius: 20px;
@@ -56,63 +56,11 @@
   letter-spacing: 0.5px;
 }
 
-/* --- Բաժանարար գիծ նկարի նման --- */
+/* --- Բաժանարար գիծ --- */
 .divider {
   height: 1px;
-  background-color: #2a2a2a; /* Գրեթե աննկատ գիծ */
+  background-color: #2a2a2a;
   margin-bottom: 12px;
-}
-
-/* --- Ներքևի հատված (Քվեարկություն) --- */
-.post-bottom {
-  display: flex;
-  align-items: center;
-}
-
-.vote-section {
-  display: flex;
-  flex-direction: row; /* Սլաքներն ու թիվը հորիզոնական դրեցինք */
-  align-items: center;
-  gap: 16px; /* Հեռավորություն սլաքների և թվի միջև */
-}
-
-.upvote-btn, .downvote-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: #777777; /* Սկզբնական խամրած գույն */
-  transition: color 0.2s ease, transform 0.1s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Վառ գույներ hover-ի ժամանակ (մկնիկը վրան պահելիս) */
-/* Hover էֆեկտները կաշխատեն ՄԻԱՅՆ համակարգիչների (մկնիկով) դեպքում */
-@media (hover: hover) {
-  .upvote-btn:hover {
-    color: #00e676; 
-    transform: scale(1.2);
-  }
-
-  .downvote-btn:hover {
-    color: #ff3d00; 
-    transform: scale(1.2);
-  }
-}
-
-.upvote-btn:active, .downvote-btn:active {
-  transform: scale(0.9); /* Սեղմելիս կտրուկ փոքրանում է */
-}
-
-/* --- ԱՎԵԼԱՑՎԱԾ ՄԱՍ՝ Ակտիվ (ընտրված) վիճակների համար --- */
-.upvote-btn.active-up {
-  color: #00e676; /* Մնում է կանաչ, երբ ընտրված է */
-}
-
-.downvote-btn.active-down {
-  color: #ff3d00; /* Մնում է կարմիր, երբ ընտրված է */
 }
 
 /* --- Ներքևի հատված (Քվեարկություն - 2 առանձին թիվ) --- */
@@ -134,6 +82,13 @@
   gap: 8px; /* Հեռավորություն սլաքի և անմիջապես իր թվի միջև */
 }
 
+.vote-count {
+  font-weight: 700;
+  font-size: 15px;
+  color: #F6F9EE; 
+}
+
+/* --- Կոճակների դիզայն և անիմացիաներ --- */
 .upvote-btn, .downvote-btn {
   background: none;
   border: none;
@@ -144,32 +99,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  /* ԱՐԳԵԼՈՒՄ ԵՆՔ ԲՐԱՈՒԶԵՐԻ ՖՈԿՈՒՍԸ ԵՎ ԿԱՊՈՒՅՏ ԹԱՐԹԵԼԸ ՀԵՌԱԽՈՍՈՒՄ */
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.upvote-btn:hover {
-  color: #00e676; 
-  transform: scale(1.2);
+/* Hover էֆեկտ ՄԻԱՅՆ իսկական մկնիկով համակարգիչների համար */
+@media (pointer: fine) {
+  .upvote-btn:hover {
+    color: #00e676; 
+    transform: scale(1.2);
+  }
+
+  .downvote-btn:hover {
+    color: #ff3d00; 
+    transform: scale(1.2);
+  }
 }
 
-.downvote-btn:hover {
-  color: #ff3d00; 
-  transform: scale(1.2);
-}
-
+/* Սեղմելու (Click-ի) անիմացիան և՛ հեռախոսի, և՛ համակարգչի համար */
 .upvote-btn:active, .downvote-btn:active {
   transform: scale(0.9); 
 }
 
+/* Ակտիվ (ընտրված) վիճակները, որոնք ղեկավարվում են React-ից */
+.upvote-btn.active-up,
 .active-up {
-  color: #00e676; 
+  color: #00e676 !important; 
 }
 
+.downvote-btn.active-down,
 .active-down {
-  color: #ff3d00; 
-}
-
-.vote-count {
-  font-weight: 700;
-  font-size: 15px;
-  color: #F6F9EE; 
+  color: #ff3d00 !important; 
 }
