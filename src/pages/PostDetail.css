@@ -1,0 +1,269 @@
+.post-detail-wrapper {
+  background-color: #000000;
+  min-height: 100vh;
+  color: #ffffff;
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --- Header --- */
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding-top: 10px;
+}
+
+.back-icon {
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.back-icon:active {
+  transform: scale(0.85); /* Հետ գնալու կոճակի էֆեկտ */
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* --- Title & Tag --- */
+.post-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.post-large-title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+  flex: 1;
+}
+
+.subject-tag-badge {
+  background-color: #004d33;
+  color: #00e676;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* --- Author --- */
+.post-author-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.author-handle {
+  color: #888888;
+  font-size: 14px;
+}
+
+/* --- Votes (Նորացված կոճակներով) --- */
+.detail-vote-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.vote-btn {
+  background-color: #1a1a1a;
+  border: 1px solid transparent;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vote-icon {
+  font-size: 20px;
+  color: #888888;
+  transition: color 0.2s ease;
+}
+
+/* Upvote էֆեկտներ */
+.vote-btn.upvote:hover {
+  background-color: rgba(0, 230, 118, 0.1);
+  border-color: #00e676;
+}
+.vote-btn.upvote:hover .vote-icon {
+  color: #00e676;
+}
+
+/* Downvote էֆեկտներ */
+.vote-btn.downvote:hover {
+  background-color: rgba(255, 51, 102, 0.1);
+  border-color: #ff3366;
+}
+.vote-btn.downvote:hover .vote-icon {
+  color: #ff3366;
+}
+
+/* Ընդհանուր սեղմման էֆեկտ */
+.vote-btn:active {
+  transform: scale(0.9);
+}
+
+.vote-num {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* --- Description & List --- */
+.section-block {
+  margin-bottom: 30px;
+}
+
+.section-label {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.description-p {
+  color: #aaaaaa;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.key-topics-list {
+  color: #aaaaaa;
+  font-size: 14px;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+/* --- Attachment Card --- */
+.attachment-card {
+  background-color: #121212;
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.pdf-icon-box {
+  background-color: #1a1a1a;
+  color: #ff3366;
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.file-name {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.file-meta {
+  color: #666666;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+/* --- Ներբեռնման և դիտման կոճակներ --- */
+.file-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.preview-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.preview-link:active {
+  opacity: 0.6;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.download-btn:hover {
+  background-color: #0056b3;
+}
+
+.download-btn:active {
+  transform: scale(0.95);
+}
+
+/* --- Comment Box --- */
+.comment-card-box {
+  background-color: #0f0f0f;
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.comment-user-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.c-user {
+  font-weight: 600;
+  font-size: 14px;
+  color: #eeeeee;
+}
+
+.c-time {
+  color: #666666;
+  font-size: 12px;
+}
+
+.c-text {
+  color: #bbbbbb;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}

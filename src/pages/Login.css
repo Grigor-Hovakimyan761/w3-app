@@ -1,0 +1,216 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000000; /* Բացարձակ սև ֆոն */
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.login-card {
+  background-color: #0a0a0a; /* Մի փոքր ավելի բաց քարտ */
+  border: 1px solid #1f1f1f;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px; /* Էկրանի մեջտեղում հավաքված տեսք */
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.brand-logo {
+  color: #ffffff;
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+}
+
+.welcome-text {
+  color: #888888;
+  font-size: 14px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* --- Web3 & Social Buttons --- */
+.web3-login-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.connect-wallet-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899); /* Ժամանակակից Web3 գրադիենտ */
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.connect-wallet-btn:hover {
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); /* Նեոնային փայլ հպվելիս */
+}
+
+.connect-wallet-btn:active {
+  transform: scale(0.96);
+}
+
+.social-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #333333;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.social-login-btn:hover {
+  background-color: #252525;
+  border-color: #555555;
+}
+
+.social-login-btn:active {
+  transform: scale(0.96);
+}
+
+.btn-icon {
+  font-size: 18px;
+}
+
+/* --- Divider (կամ) --- */
+.divider-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #2a2a2a;
+}
+
+.divider-text {
+  color: #666666;
+  font-size: 13px;
+  padding: 0 10px;
+}
+
+/* --- Form Styles --- */
+.standard-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  color: #bbbbbb;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.login-input {
+  background-color: #121212;
+  border: 1px solid #2a2a2a;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.login-input:focus {
+  border-color: #007bff;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #888888;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: #007bff;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: #339af0;
+}
+
+.main-login-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.main-login-btn:hover {
+  background-color: #0056b3;
+}
+
+.main-login-btn:active {
+  transform: scale(0.96);
+}
+
+/* --- Signup Prompt --- */
+.signup-prompt {
+  color: #888888;
+  font-size: 14px;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.signup-link {
+  color: #00e676; /* Վառ կանաչ շեշտադրում */
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.signup-link:hover {
+  color: #33ff99;
+}

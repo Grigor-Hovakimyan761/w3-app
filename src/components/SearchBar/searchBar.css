@@ -1,0 +1,80 @@
+.searchbar-container {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.searchbar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 24px;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+}
+
+.searchbar:focus-within {
+  border-color: #007aff;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+}
+
+.searchbar-button {
+  background: none;
+  border: none;
+  color: #888888;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.searchbar-button:hover {
+  color: #ffffff;
+}
+
+.searchbar-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+}
+
+.searchbar-input::placeholder {
+  color: #666666;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+  color: #ffffff;
+  font-size: 22px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+  background-color: #333333;
+  border-color: #007aff;
+  color: #007aff;
+}
+
+.filter-button:active, .searchbar-button:active {
+  transform: scale(0.9); /* Սեղմման էֆեկտ */
+  opacity: 0.7; /* Մի պահ թեթևակի խամրում է հպվելիս */
+}

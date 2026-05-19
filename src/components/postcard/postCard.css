@@ -1,0 +1,116 @@
+/* Քարտի գլխավոր կոնտեյները (Մուգ թեմա) */
+.post-card-container {
+  display: flex;
+  flex-direction: column; /* Դասավորությունը դարձրինք վերևից ներքև */
+  background-color: #121212; /* Հիմնական մուգ մոխրագույն ֆոն */
+  border: 1px solid #2a2a2a; /* Նուրբ, մի քիչ բաց մոխրագույն եզրագիծ */
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Էֆեկտ մկնիկը վրան պահելիս */
+.post-card-container:hover {
+  background-color: #161616; /* Մի փոքր ավելի բացանում է */
+  border-color: #3a3a3a;
+}
+
+/* --- Վերևի հատված (Վերնագիր + Tag) --- */
+.post-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.post-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 75%; /* Որպեսզի երկար վերնագիրը չկպնի Tag-ին */
+}
+
+.post-title {
+  margin: 0;
+  font-size: 18px;
+  color: #ffffff; /* Վերնագիրը՝ վառ սպիտակ */
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.author-nickname {
+  color: #888888; /* Նիքնեյմը՝ խամրած մոխրագույն */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* --- Առարկայի պիտակը (Tag) --- */
+.subject-tag {
+  background-color: #007bff; /* Վառ կապույտ (կարող ենք հետո դինամիկ դարձնել) */
+  color: #F6F9EE;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* --- Բաժանարար գիծ նկարի նման --- */
+.divider {
+  height: 1px;
+  background-color: #2a2a2a; /* Գրեթե աննկատ գիծ */
+  margin-bottom: 12px;
+}
+
+/* --- Ներքևի հատված (Քվեարկություն) --- */
+.post-bottom {
+  display: flex;
+  align-items: center;
+}
+
+.vote-section {
+  display: flex;
+  flex-direction: row; /* Սլաքներն ու թիվը հորիզոնական դրեցինք */
+  align-items: center;
+  gap: 16px; /* Հեռավորություն սլաքների և թվի միջև */
+}
+
+.upvote-btn, .downvote-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #777777; /* Սկզբնական խամրած գույն */
+  transition: color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Վառ գույներ կոճակները սեղմելիս կամ վրան պահելիս */
+.upvote-btn:hover {
+  color: #00e676; /* Վառ կանաչ դրականի համար */
+  transform: scale(1.2);
+}
+
+.downvote-btn:hover {
+  color: #ff3d00; /* Վառ կարմիր/նարնջագույն բացասականի համար */
+  transform: scale(1.2);
+}
+
+.upvote-btn:active {
+  color: #00e676;
+  transform: scale(0.9); /* Սեղմելիս կտրուկ փոքրանում է */
+}
+
+.downvote-btn:active {
+  color: #ff3d00;
+  transform: scale(0.9);
+}
+
+.vote-count {
+  font-weight: 700;
+  font-size: 15px;
+  color: #F6F9EE; /* Գնահատականի թիվը սպիտակով */
+}
