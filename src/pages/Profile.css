@@ -31,6 +31,9 @@
   padding: 8px;
   border-radius: 8px;
   transition: background 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;     
+  justify-content: center;
 }
 
 .settings-icon-btn:active {
@@ -55,6 +58,7 @@
   justify-content: center;
   font-size: 32px;
   background-color: #121212;
+  flex-shrink: 0;
 }
 
 .user-academic-info {
@@ -162,6 +166,7 @@
   position: relative;
   cursor: pointer;
   transition: background-color 0.3s;
+  flex-shrink: 0;
 }
 
 .toggle-switch.active {
@@ -188,17 +193,23 @@
 }
 
 /* --- 5. Stats Row --- */
+/* --- 5. Stats Row --- */
 .stats-row {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* Փոխարինել ենք space-around-ը */
   align-items: center;
   margin-bottom: 20px;
+  width: 100%;
+  gap: 20px; /* Ապահովագրական հեռավորություն */
+  padding: 0 10px;
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1; /* Սա կստիպի բոլոր 3-ին հավասար տարածք վերցնել */
+  text-align: center;
 }
 
 .stat-number {
@@ -210,12 +221,21 @@
 .stat-title {
   color: #666666;
   font-size: 13px;
+  word-break: break-word; /* Եթե բառը շատ երկար է, այն կիջնի նոր տող */
 }
 
 .stat-divider {
   height: 40px;
   width: 1px;
   background-color: #2a2a2a;
+  flex-shrink: 0; /* Որպեսզի գծիկներն էլ չանհետանան/չճզմվեն */
+}
+
+/* ՇԱՏ ՆԵՂ էկրանների համար (օրինակ որոշ Android-ներ) */
+@media (max-width: 380px) {
+  .stat-title {
+    font-size: 11px; /* Տառերը մի փոքր կփոքրանան, որ իրար վրա չելնեն */
+  }
 }
 
 /* --- 6. Tabs Row --- */
@@ -225,28 +245,33 @@
   margin-bottom: 20px;
 }
 
+/* 1. Գլխավոր տաբի կոճակը */
 .tab-btn {
   flex: 1;
   background: none;
   border: none;
   color: #888888;
-  padding: 12px 0;
-  font-size: 14px;
+  padding: 12px 2px; /* Կողքերից դատարկ տարածքը մի փոքր փոքրացրինք */
+  font-size: 13px; /* Նախկին 14-ը դարձրինք 13, որ ավելի լավ տեղավորվի */
   font-weight: 600;
   cursor: pointer;
   position: relative;
-  transition: color 0.2s;
+  transition: color 0.2s, background-color 0.2s;
+  
+  /* Տեքստի ու icon-ի դասավորությունը */
+  display: flex;
+  align-items: center;       
+  justify-content: center;   
+  gap: 6px; /* Մի փոքր փոքրացրինք իրար արանքը (նախկինում 8 էր) */
 }
 
+/* Ակտիվ վիճակները նույնն են մնում */
 .tab-btn:active {
   background-color: #1a1a1a;
 }
-
 .tab-btn.active-tab {
-  color: #007bff;
+  color: #007bff; /* Կամ քո դրած նեոնային գույները */
 }
-
-/* Կապույտ գիծը ակտիվ տաբի տակ */
 .tab-btn.active-tab::after {
   content: '';
   position: absolute;
@@ -257,7 +282,7 @@
   background-color: #007bff;
 }
 
-/* Կարմիր կետիկ Հայտերի վրա */
+/* 2. Կարմիր կետիկի դիրքի ուղղում */
 .notification-dot {
   display: inline-block;
   width: 6px;
@@ -266,9 +291,23 @@
   border-radius: 50%;
   position: absolute;
   top: 10px;
-  right: 25px;
+  right: 10%; /* 25px-ի փոխարեն դնում ենք տոկոս, որպեսզի միշտ ճկուն մնա և տեքստի մեջ չմտնի */
 }
 
+/* 3. ՀԱՏՈՒԿ ԿԱՆՈՆ ՆԵՂ ԷԿՐԱՆՆԵՐԻ ՀԱՄԱՐ (iPhone 14 Pro, Android և այլն) */
+@media (max-width: 400px) {
+  .tab-btn {
+    flex-direction: column; /* Պատկերակը հանում ենք տեքստի վերևը */
+    font-size: 11px; /* Տեքստը զգալիորեն փոքրացնում ենք, որ տեղավորվի */
+    gap: 4px; /* Icon-ի ու տեքստի արանքն էլ ենք փոքրացնում */
+    padding: 8px 0;
+  }
+  
+  .notification-dot {
+    top: 6px;
+    right: 25%; /* Քանի որ icon-ը վերևն է, կետիկը մոտեցնում ենք icon-ին */
+  }
+}
 /* --- 7. Posts Feed --- */
 .posts-feed {
   display: flex;
