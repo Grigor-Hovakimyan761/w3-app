@@ -1,8 +1,6 @@
+import { useState } from 'react';
 import './postCard.css';
-import { FaHandPointUp } from "react-icons/fa6";
-import { FaHandPointDown } from "react-icons/fa6";
-
-
+import { FaHandPointUp, FaHandPointDown } from "react-icons/fa6";
 
 interface PostCardProps {
   title: string;
@@ -12,6 +10,32 @@ interface PostCardProps {
 }
 
 const PostCard = ({ title, authorNickname, subjectTag, upvotes }: PostCardProps) => {
+  // Ստեղծում ենք state-ներ քվեարկության կարգավիճակի և թվի համար
+  const [voteStatus, setVoteStatus] = useState<'up' | 'down' | null>(null);
+  const [votesCount, setVotesCount] = useState<number>(upvotes);
+
+  // Upvote տրամաբանություն
+  const handleUpvote = () => {
+    if (voteStatus === 'up') {
+      setVoteStatus(null); 
+      setVotesCount(votesCount - 1);
+    } else {
+      setVoteStatus('up');
+      setVotesCount(voteStatus === 'down' ? votesCount + 2 : votesCount + 1);
+    }
+  };
+
+  // Downvote տրամաբանություն
+  const handleDownvote = () => {
+    if (voteStatus === 'down') {
+      setVoteStatus(null);
+      setVotesCount(votesCount + 1);
+    } else {
+      setVoteStatus('down');
+      setVotesCount(voteStatus === 'up' ? votesCount - 2 : votesCount - 1);
+    }
+  };
+
   return (
     <div className="post-card-container">
       
@@ -31,11 +55,21 @@ const PostCard = ({ title, authorNickname, subjectTag, upvotes }: PostCardProps)
       {/* Ներքևի հատված՝ Գնահատականներ (Հորիզոնական) */}
       <div className="post-bottom">
         <div className="vote-section">
-          <button className="upvote-btn">
+          {/* Ավելացրել ենք դինամիկ կլաս և onClick */}
+          <button 
+            className={`upvote-btn ${voteStatus === 'up' ? 'active-up' : ''}`}
+            onClick={handleUpvote}
+          >
             <FaHandPointUp />
           </button>
-          <span className="vote-count">{upvotes}</span>
-          <button className="downvote-btn">
+          
+          <span className="vote-count">{votesCount}</span>
+          
+          {/* Ավելացրել ենք դինամիկ կլաս և onClick */}
+          <button 
+            className={`downvote-btn ${voteStatus === 'down' ? 'active-down' : ''}`}
+            onClick={handleDownvote}
+          >
             <FaHandPointDown />
           </button>
         </div>

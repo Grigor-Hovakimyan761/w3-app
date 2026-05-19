@@ -88,29 +88,26 @@
   justify-content: center;
 }
 
-/* Վառ գույներ կոճակները սեղմելիս կամ վրան պահելիս */
+/* Վառ գույներ hover-ի ժամանակ (մկնիկը վրան պահելիս) */
 .upvote-btn:hover {
-  color: #00e676; /* Վառ կանաչ դրականի համար */
+  color: #00e676; 
   transform: scale(1.2);
 }
 
 .downvote-btn:hover {
-  color: #ff3d00; /* Վառ կարմիր/նարնջագույն բացասականի համար */
+  color: #ff3d00; 
   transform: scale(1.2);
 }
 
-.upvote-btn:active {
-  color: #00e676;
+.upvote-btn:active, .downvote-btn:active {
   transform: scale(0.9); /* Սեղմելիս կտրուկ փոքրանում է */
 }
 
-.downvote-btn:active {
-  color: #ff3d00;
-  transform: scale(0.9);
+/* --- ԱՎԵԼԱՑՎԱԾ ՄԱՍ՝ Ակտիվ (ընտրված) վիճակների համար --- */
+.upvote-btn.active-up {
+  color: #00e676; /* Մնում է կանաչ, երբ ընտրված է */
 }
 
-.vote-count {
-  font-weight: 700;
-  font-size: 15px;
-  color: #F6F9EE; /* Գնահատականի թիվը սպիտակով */
+.downvote-btn.active-down {
+  color: #ff3d00; /* Մնում է կարմիր, երբ ընտրված է */
 }
