@@ -1,98 +1,112 @@
-import { useState } from 'react';
 import './postCard.css';
-import { FaHandPointUp, FaHandPointDown } from "react-icons/fa6";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaBookmark, FaHandshake, FaHandPointDown, FaHandPointUp } from 'react-icons/fa6';
+import type { PostTag } from '../../data/mockPosts';
 
-interface PostCardProps {
+export interface PostCardProps {
+  id: string;
+  author: string;
   title: string;
-  authorNickname: string;
-  subjectTag: string;
-  initialLikes: number;    // Նախկին upvotes-ի փոխարեն
-  initialDislikes: number; // Ավելացրել ենք դիսլայքերի սկզբնական թիվը
+  content: string;
+  upvotes: number;
+  tag: PostTag;
 }
 
-const PostCard = ({ title, authorNickname, subjectTag, initialLikes, initialDislikes }: PostCardProps) => {
-  // Պահում ենք օգտատիրոջ ընտրությունը ('up', 'down', կամ null)
+const tagClassByName: Record<PostTag, string> = {
+  Math: 'tag-math',
+  Physics: 'tag-physics',
+  CS: 'tag-cs',
+  Biology: 'tag-biology',
+  General: 'tag-general',
+};
+
+const PostCard = ({ id, author, title, content, upvotes, tag }: PostCardProps) => {
   const [voteStatus, setVoteStatus] = useState<'up' | 'down' | null>(null);
-  
-  // Պահում ենք երկու առանձին թվեր
-  const [likes, setLikes] = useState<number>(initialLikes);
-  const [dislikes, setDislikes] = useState<number>(initialDislikes);
+  const [score, setScore] = useState<number>(upvotes);
+  const [isSaved, setIsSaved] = useState(false);
 
   const handleUpvote = () => {
     if (voteStatus === 'up') {
-      // Եթե արդեն լայքել էր, հանում ենք լայքը (չեղարկում)
       setVoteStatus(null);
-      setLikes(likes - 1);
+      setScore(score - 1);
     } else if (voteStatus === 'down') {
-      // Եթե դիսլայք էր արել ու հիմա լայքում է՝ դիսլայքը հանում ենք, լայքը ավելացնում
       setVoteStatus('up');
-      setDislikes(dislikes - 1);
-      setLikes(likes + 1);
+      setScore(score + 2);
     } else {
-      // Եթե ոչինչ չէր արել, պարզապես լայքում է
       setVoteStatus('up');
-      setLikes(likes + 1);
+      setScore(score + 1);
     }
   };
 
   const handleDownvote = () => {
     if (voteStatus === 'down') {
-      // Եթե արդեն դիսլայքել էր, հանում ենք դիսլայքը (չեղարկում)
       setVoteStatus(null);
-      setDislikes(dislikes - 1);
+      setScore(score + 1);
     } else if (voteStatus === 'up') {
-      // Եթե լայքել էր ու հիմա դիսլայքում է՝ լայքը հանում ենք, դիսլայքը ավելացնում
       setVoteStatus('down');
-      setLikes(likes - 1);
-      setDislikes(dislikes + 1);
+      setScore(score - 2);
     } else {
-      // Եթե ոչինչ չէր արել, պարզապես դիսլայքում է
       setVoteStatus('down');
-      setDislikes(dislikes + 1);
+      setScore(score - 1);
     }
   };
 
   return (
     <div className="post-card-container">
-      
       <div className="post-top">
         <div className="post-info">
-          <h3 className="post-title">{title}</h3>
-          <span className="author-nickname">@{authorNickname}</span>
+          <Link to={`/post/${id}`} className="post-title-link">
+            <h3 className="post-title">{title}</h3>
+          </Link>
+          <span className="author-nickname">@{author}</span>
         </div>
-        <span className="subject-tag">{subjectTag}</span>
+        <span className={`subject-tag ${tagClassByName[tag]}`}>{tag}</span>
       </div>
 
-      <div className="divider"></div>
+      <p className="post-content">{content}</p>
+
+      <div className="divider" />
 
       <div className="post-bottom">
         <div className="vote-section">
-          
-          {/* ԼԱՅՔԵՐԻ ԲԼՈԿ */}
           <div className="vote-item">
             <button 
               className={`upvote-btn ${voteStatus === 'up' ? 'active-up' : ''}`}
               onClick={handleUpvote}
+              type="button"
+              aria-label="Upvote post"
             >
               <FaHandPointUp />
             </button>
-            <span className="vote-count">{likes}</span>
-          </div>
-
-          {/* ԴԻՍԼԱՅՔԵՐԻ ԲԼՈԿ */}
-          <div className="vote-item">
+            <span className="vote-count">{score}</span>
             <button 
               className={`downvote-btn ${voteStatus === 'down' ? 'active-down' : ''}`}
               onClick={handleDownvote}
+              type="button"
+              aria-label="Downvote post"
             >
               <FaHandPointDown />
             </button>
-            <span className="vote-count">{dislikes}</span>
           </div>
+        </div>
 
+        <div className="post-actions">
+          <button className="connect-btn" type="button">
+            <FaHandshake />
+            <span>Connect</span>
+          </button>
+          <button
+            className={`save-btn ${isSaved ? 'saved' : ''}`}
+            type="button"
+            aria-pressed={isSaved}
+            aria-label={isSaved ? 'Remove saved post' : 'Save post'}
+            onClick={() => setIsSaved((current) => !current)}
+          >
+            <FaBookmark />
+          </button>
         </div>
       </div>
-
     </div>
   );
 };

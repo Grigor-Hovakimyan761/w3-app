@@ -2,6 +2,7 @@ import './Login.css';
 import { FaWallet, FaGoogle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
+
 const Login = () => {
 
   const navigate = useNavigate();
@@ -52,7 +53,8 @@ const Login = () => {
             <a href="#" className="forgot-password">Մոռացե՞լ եք գաղտնաբառը</a>
           </div>
 
-          <button type="button" className="main-login-btn">Մուտք</button>
+          <button type="button" className="main-login-btn"
+          onClick={()=>navigate('/')}>Մուտք</button>
         </form>
 
         {/* Գրանցման հղում */}

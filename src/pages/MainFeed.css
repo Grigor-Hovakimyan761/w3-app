@@ -1,0 +1,10 @@
+.main-feed {
+  width: 100%;
+  max-width: 640px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.main-feed-list {
+  padding: 0 16px 16px;
+}

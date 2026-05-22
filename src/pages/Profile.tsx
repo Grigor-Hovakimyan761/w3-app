@@ -113,18 +113,20 @@ const Profile = () => {
       {/* 7. Նյութերի ցանկ */}
       <div className="posts-feed">
         <PostCard
+          id="profile-react-hooks"
           title="React hooks and state management"
-          authorNickname="Grigor_Dev"
-          subjectTag="CompSci"
-          initialLikes={89}
-          initialDislikes={12}
+          author="Grigor_Dev"
+          content="A short guide I use to decide when useState, useReducer, or a custom hook makes the most sense."
+          upvotes={89}
+          tag="CS"
         />
         <PostCard
+          id="profile-calculus-notes"
           title="Advanced Calculus notes"
-          authorNickname="Grigor_Dev"
-          subjectTag="Math"
-          initialLikes={9}
-          initialDislikes={52}
+          author="Grigor_Dev"
+          content="My summary of limits, series, and multivariable derivatives with examples from last semester."
+          upvotes={9}
+          tag="Math"
         />
       </div>
 

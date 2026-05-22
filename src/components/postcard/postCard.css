@@ -1,42 +1,47 @@
-/* Քարտի գլխավոր կոնտեյները (Մուգ թեմա) */
 .post-card-container {
   display: flex;
   flex-direction: column;
   background-color: #121212;
   border: 1px solid #2a2a2a;
-  border-radius: 12px;
-  padding: 16px 20px;
+  border-radius: 8px;
+  padding: 16px;
   margin-bottom: 16px;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Էֆեկտ մկնիկը վրան պահելիս */
-.post-card-container:hover {
-  background-color: #161616;
-  border-color: #3a3a3a;
+@media (pointer: fine) {
+  .post-card-container:hover {
+    background-color: #161616;
+    border-color: #3a3a3a;
+  }
 }
 
-/* --- Վերևի հատված (Վերնագիր + Tag) --- */
 .post-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
 .post-info {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  max-width: 75%;
+  min-width: 0;
+}
+
+.post-title-link {
+  display: block;
 }
 
 .post-title {
   margin: 0;
-  font-size: 18px;
+  font-size: 17px;
   color: #ffffff;
-  line-height: 1.4;
+  line-height: 1.35;
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 .author-nickname {
@@ -45,51 +50,83 @@
   font-weight: 500;
 }
 
-/* --- Առարկայի պիտակը (Tag) --- */
 .subject-tag {
-  background-color: #007bff;
-  color: #F6F9EE;
+  flex: 0 0 auto;
   padding: 4px 14px;
-  border-radius: 20px;
+  border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  line-height: 1.4;
 }
 
-/* --- Բաժանարար գիծ --- */
+.tag-math {
+  background-color: rgba(45, 140, 255, 0.16);
+  color: #74b9ff;
+}
+
+.tag-physics {
+  background-color: rgba(0, 230, 118, 0.16);
+  color: #5cf29a;
+}
+
+.tag-cs {
+  background-color: rgba(255, 193, 7, 0.18);
+  color: #ffd76a;
+}
+
+.tag-biology {
+  background-color: rgba(38, 198, 218, 0.16);
+  color: #63dbe8;
+}
+
+.tag-general {
+  background-color: rgba(186, 104, 200, 0.18);
+  color: #d89ee3;
+}
+
+.post-content {
+  color: #c7c7c7;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0 0 14px;
+  overflow-wrap: anywhere;
+}
+
 .divider {
   height: 1px;
   background-color: #2a2a2a;
   margin-bottom: 12px;
 }
 
-/* --- Ներքևի հատված (Քվեարկություն - 2 առանձին թիվ) --- */
 .post-bottom {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .vote-section {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 24px; /* Հեռավորություն լայքերի և դիսլայքերի բլոկների միջև */
 }
 
 .vote-item {
   display: flex;
   align-items: center;
-  gap: 8px; /* Հեռավորություն սլաքի և անմիջապես իր թվի միջև */
+  gap: 10px;
 }
 
 .vote-count {
+  min-width: 32px;
+  text-align: center;
   font-weight: 700;
   font-size: 15px;
-  color: #F6F9EE; 
+  color: #f6f9ee; 
 }
 
-/* --- Կոճակների դիզայն և անիմացիաներ --- */
-.upvote-btn, .downvote-btn {
+.upvote-btn,
+.downvote-btn,
+.save-btn {
   background: none;
   border: none;
   cursor: pointer;
@@ -99,13 +136,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  /* ԱՐԳԵԼՈՒՄ ԵՆՔ ԲՐԱՈՒԶԵՐԻ ՖՈԿՈՒՍԸ ԵՎ ԿԱՊՈՒՅՏ ԹԱՐԹԵԼԸ ՀԵՌԱԽՈՍՈՒՄ */
   outline: none;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Hover էֆեկտ ՄԻԱՅՆ իսկական մկնիկով համակարգիչների համար */
 @media (pointer: fine) {
   .upvote-btn:hover {
     color: #00e676; 
@@ -116,14 +150,19 @@
     color: #ff3d00; 
     transform: scale(1.2);
   }
+
+  .save-btn:hover {
+    color: #ffd76a;
+    transform: scale(1.1);
+  }
 }
 
-/* Սեղմելու (Click-ի) անիմացիան և՛ հեռախոսի, և՛ համակարգչի համար */
-.upvote-btn:active, .downvote-btn:active {
+.upvote-btn:active,
+.downvote-btn:active,
+.save-btn:active {
   transform: scale(0.9); 
 }
 
-/* Ակտիվ (ընտրված) վիճակները, որոնք ղեկավարվում են React-ից */
 .upvote-btn.active-up,
 .active-up {
   color: #00e676 !important; 
@@ -132,4 +171,54 @@
 .downvote-btn.active-down,
 .active-down {
   color: #ff3d00 !important; 
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.connect-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background-color: #f6f9ee;
+  color: #121212;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.save-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+}
+
+.save-btn.saved {
+  color: #ffd76a;
+  border-color: rgba(255, 215, 106, 0.55);
+}
+
+@media (pointer: fine) {
+  .connect-btn:hover {
+    background-color: #ffffff;
+    transform: translateY(-1px);
+  }
+}
+
+.connect-btn:active {
+  transform: scale(0.96);
+}
+
+@media (min-width: 640px) {
+  .post-card-container {
+    padding: 18px 20px;
+  }
 }
