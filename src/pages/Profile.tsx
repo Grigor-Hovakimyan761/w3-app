@@ -8,6 +8,7 @@ import { SiSparkpost } from "react-icons/si";
 import { BsBookmark } from "react-icons/bs";
 import { IoPeopleSharp } from "react-icons/io5";
 import { useAuth } from '../auth/useAuth';
+import { mockPosts } from '../data/mockPosts';
 
 
 
@@ -23,6 +24,10 @@ const Profile = () => {
   const profileHandle = user?.email ? user.email.split('@')[0] : `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
   const shortWalletAddress = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
   const authLabel = user?.authMethod === 'email' ? 'Email մուտք' : 'Wallet մուտք';
+  const profilePosts = mockPosts.slice(0, 2).map((post) => ({
+    ...post,
+    author_username: profileHandle,
+  }));
 
   const handleCopyWallet = () => {
     if (navigator.clipboard) {
@@ -148,22 +153,9 @@ const Profile = () => {
 
       {/* 7. Նյութերի ցանկ */}
       <div className="posts-feed">
-        <PostCard
-          id="profile-react-hooks"
-          title="React hooks and state management"
-          author="Grigor_Dev"
-          content="A short guide I use to decide when useState, useReducer, or a custom hook makes the most sense."
-          upvotes={89}
-          tag="CS"
-        />
-        <PostCard
-          id="profile-calculus-notes"
-          title="Advanced Calculus notes"
-          author="Grigor_Dev"
-          content="My summary of limits, series, and multivariable derivatives with examples from last semester."
-          upvotes={9}
-          tag="Math"
-        />
+        {profilePosts.map((post) => (
+          <PostCard key={`profile-${post.id}`} {...post} />
+        ))}
       </div>
 
     </div>

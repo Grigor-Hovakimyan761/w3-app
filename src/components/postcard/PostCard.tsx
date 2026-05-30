@@ -2,28 +2,30 @@ import './postCard.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBookmark, FaHandshake, FaHandPointDown, FaHandPointUp } from 'react-icons/fa6';
-import type { PostTag } from '../../data/mockPosts';
+import { subjectLabelByValue } from '../../data/mockPosts';
+import type { PostSubject } from '../../types/database';
 
 export interface PostCardProps {
   id: string;
-  author: string;
+  author_username: string;
   title: string;
-  content: string;
-  upvotes: number;
-  tag: PostTag;
+  description: string;
+  vote_score: number;
+  subject: PostSubject;
 }
 
-const tagClassByName: Record<PostTag, string> = {
-  Math: 'tag-math',
-  Physics: 'tag-physics',
-  CS: 'tag-cs',
-  Biology: 'tag-biology',
-  General: 'tag-general',
+const tagClassBySubject: Record<PostSubject, string> = {
+  math: 'tag-math',
+  physics: 'tag-physics',
+  chemistry: 'tag-general',
+  programming: 'tag-cs',
+  biology: 'tag-biology',
+  general: 'tag-general',
 };
 
-const PostCard = ({ id, author, title, content, upvotes, tag }: PostCardProps) => {
+const PostCard = ({ id, author_username, title, description, vote_score, subject }: PostCardProps) => {
   const [voteStatus, setVoteStatus] = useState<'up' | 'down' | null>(null);
-  const [score, setScore] = useState<number>(upvotes);
+  const [score, setScore] = useState<number>(vote_score);
   const [isSaved, setIsSaved] = useState(false);
 
   const handleUpvote = () => {
@@ -59,12 +61,14 @@ const PostCard = ({ id, author, title, content, upvotes, tag }: PostCardProps) =
           <Link to={`/post/${id}`} className="post-title-link">
             <h3 className="post-title">{title}</h3>
           </Link>
-          <span className="author-nickname">@{author}</span>
+          <span className="author-nickname">@{author_username}</span>
         </div>
-        <span className={`subject-tag ${tagClassByName[tag]}`}>{tag}</span>
+        <span className={`subject-tag ${tagClassBySubject[subject]}`}>
+          {subjectLabelByValue[subject]}
+        </span>
       </div>
 
-      <p className="post-content">{content}</p>
+      <p className="post-content">{description}</p>
 
       <div className="divider" />
 
