@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PostCard from '../components/postcard/PostCard';
 import './Profile.css';
 import { IoSettingsOutline } from "react-icons/io5";
-import { FaCopy } from "react-icons/fa";
+import { FaCopy, FaSignOutAlt } from "react-icons/fa";
 import { SiSparkpost } from "react-icons/si";
 import { BsBookmark } from "react-icons/bs";
 import { IoPeopleSharp } from "react-icons/io5";
+import { useAuth } from '../auth/useAuth';
 
 
 
@@ -13,16 +15,46 @@ const Profile = () => {
   // Ստեղծում ենք վիճակներ (State) անջատիչի և տաբերի համար
   const [isConnectionsOpen, setIsConnectionsOpen] = useState(true);
   const [activeTab, setActiveTab] = useState('posts');
+  const [copyStatus, setCopyStatus] = useState('Պատճենել');
+  const navigate = useNavigate();
+  const { logout, user } = useAuth();
+
+  const walletAddress = user?.walletAddress ?? '0x0000000000000000000000000000000000000000';
+  const profileHandle = user?.email ? user.email.split('@')[0] : `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
+  const shortWalletAddress = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
+  const authLabel = user?.authMethod === 'email' ? 'Email մուտք' : 'Wallet մուտք';
+
+  const handleCopyWallet = () => {
+    if (navigator.clipboard) {
+      void navigator.clipboard.writeText(walletAddress);
+    }
+
+    setCopyStatus('Պատճենված է');
+    window.setTimeout(() => setCopyStatus('Պատճենել'), 1500);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login', { replace: true });
+  };
 
   return (
     <div className="profile-container">
 
       {/* 1. Վերևի նավիգացիա */}
       <div className="profile-top-bar">
-        <h2>@Grigor_Dev</h2>
-        <button className="settings-icon-btn">
-          <IoSettingsOutline />
-        </button>
+        <div>
+          <h2>@{profileHandle}</h2>
+          <span className="auth-method-badge">{authLabel}</span>
+        </div>
+        <div className="profile-actions">
+          <button className="settings-icon-btn" type="button" aria-label="Կարգավորումներ">
+            <IoSettingsOutline />
+          </button>
+          <button className="logout-icon-btn" type="button" onClick={handleLogout} aria-label="Դուրս գալ">
+            <FaSignOutAlt />
+          </button>
+        </div>
       </div>
 
       {/* 2. Օգտատիրոջ ինֆո */}
@@ -42,10 +74,14 @@ const Profile = () => {
       <div className="web3-section">
         <span className="section-label">Web3 ID</span>
         <div className="web3-input-box">
-          <span className="web3-address">0x3F8...B9a1</span>
-          <button className="copy-btn">
+          <span className="web3-address">{shortWalletAddress}</span>
+          <button className="copy-btn" type="button" onClick={handleCopyWallet} title={copyStatus}>
             <FaCopy />
           </button>
+        </div>
+        <div className="auth-details-row">
+          <span>{user?.email ?? 'External wallet'}</span>
+          <span>{copyStatus}</span>
         </div>
       </div>
 

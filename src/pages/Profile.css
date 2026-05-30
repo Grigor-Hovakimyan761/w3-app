@@ -22,6 +22,25 @@
   font-size: 20px;
 }
 
+.auth-method-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 6px;
+  color: #00e676;
+  background: rgba(0, 230, 118, 0.1);
+  border: 1px solid rgba(0, 230, 118, 0.28);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.profile-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .settings-icon-btn {
   background: #1a1a1a;
   color: #cccccc;
@@ -36,7 +55,25 @@
   justify-content: center;
 }
 
+.logout-icon-btn {
+  background: #2a1418;
+  color: #ff7b8a;
+  border: 1px solid #4a1f27;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .settings-icon-btn:active {
+  transform: scale(0.9);
+}
+
+.logout-icon-btn:active {
   transform: scale(0.9);
 }
 
@@ -118,6 +155,22 @@
 .copy-btn:active {
   transform: scale(0.85);
   color: #ffffff;
+}
+
+.auth-details-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #777777;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.auth-details-row span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* --- 4. Connections Toggle Card --- */

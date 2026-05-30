@@ -6,6 +6,7 @@ import PostDetail from './pages/PostDetail';
 import UploadPost from './pages/UploadPost';
 import Profile from './pages/Profile';
 import BottomNavbar from './components/BottomNavbar/BottomNavbar'; 
+import ProtectedRoute from './auth/ProtectedRoute';
 
 import './App.css';
 
@@ -30,19 +31,21 @@ function App() {
           {/* ԱՆՎԱՎԵՐԱՑՎԱԾ ԳՈՏԻ. Մուտքի էջ (Առանց նավիգացիայի) */}
           <Route path="/login" element={<Login />} />
           
-          {/* ՎԱՎԵՐԱՑՎԱԾ ԳՈՏԻ. Մնացած բոլոր էջերը՝ փաթեթավորված MainLayout-ով */}
-          <Route element={<MainLayout />}>
-            {/* Գլխավոր էջ (լրահոս) */}
-            <Route path="/" element={<MainFeed />} />
-            
-            {/* Օգտատիրոջ պրոֆիլը */}
-            <Route path="/profile" element={<Profile />} />
-            
-            {/* Նոր գրառում (post) ավելացնելու էջ */}
-            <Route path="/upload" element={<UploadPost />} />
-            
-            {/* Առանձին գրառման էջ (դինամիկ ճանապարհ՝ id-ով) */}
-            <Route path="/post/:id" element={<PostDetail />} />
+          <Route element={<ProtectedRoute />}>
+            {/* ՎԱՎԵՐԱՑՎԱԾ ԳՈՏԻ. Մնացած բոլոր էջերը՝ փաթեթավորված MainLayout-ով */}
+            <Route element={<MainLayout />}>
+              {/* Գլխավոր էջ (լրահոս) */}
+              <Route path="/" element={<MainFeed />} />
+              
+              {/* Օգտատիրոջ պրոֆիլը */}
+              <Route path="/profile" element={<Profile />} />
+              
+              {/* Նոր գրառում (post) ավելացնելու էջ */}
+              <Route path="/upload" element={<UploadPost />} />
+              
+              {/* Առանձին գրառման էջ (դինամիկ ճանապարհ՝ id-ով) */}
+              <Route path="/post/:id" element={<PostDetail />} />
+            </Route>
           </Route>
 
         </Routes>
